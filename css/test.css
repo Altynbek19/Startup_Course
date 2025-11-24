@@ -1,0 +1,19 @@
+.test-content {
+    max-width: 800px;
+    margin: 60px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.question {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.result {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
