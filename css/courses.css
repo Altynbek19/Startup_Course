@@ -32,3 +32,37 @@
     color: #555;
     margin: 10px 0 20px;
 }
+
+
+.user-panel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #1e293b;
+    padding: 8px 14px;
+    border-radius: 8px;
+}
+
+.user-photo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.logout-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #dc2626;
+}
+
+.name_email{
+    display: flex;
+    flex-direction: column;
+}

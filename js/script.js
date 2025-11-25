@@ -49,3 +49,89 @@ document.querySelector(".main_container").style.paddingTop = `${headerHeight}px`
 //     }
 // });
 
+
+// import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+
+// const auth = getAuth();
+
+// // Главный слушатель авторизации
+// onAuthStateChanged(auth, (user) => {
+//     if (user) {
+//         console.log("Пользователь авторизован:", user);
+
+//         document.getElementById("userName").textContent = user.displayName;
+//         document.getElementById("userEmail").textContent = user.email;
+
+//     } else {
+//         console.log("Пользователь не авторизован");
+//     }
+// });
+
+
+// const user = JSON.parse(localStorage.getItem("user"));
+
+// if (user) {
+//     console.log("Пользователь на этой странице:", user);
+
+//     document.getElementById("userName").textContent = user.name;
+//     document.getElementById("userEmail").textContent = user.email;
+//     document.getElementById("userPhoto").textContent = src(user.photo);
+// }
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     const user = JSON.parse(localStorage.getItem("user"));
+//     const panel = document.getElementById("user-panel");
+
+//     if (user) {
+//         panel.style.display = "flex";
+
+//         document.getElementById("user-name").textContent = user.name;
+//         document.getElementById("user-photo").src = user.photo;
+
+//         document.getElementById("logout-btn").addEventListener("click", () => {
+//             localStorage.removeItem("user");
+//             window.location.reload();
+//         });
+
+//     } else {
+//         panel.style.display = "none";
+//     }
+// });
+
+
+// ======== ЗАГРУЗКА ДАННЫХ ПОЛЬЗОВАТЕЛЯ ========
+document.addEventListener("DOMContentLoaded", () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const panel = document.getElementById("user-panel");
+
+    if (!panel) {
+        // На этой странице нет панели пользователя — ничего не делаем
+        return;
+    }
+
+    if (!user) {
+        // Пользователь НЕ авторизован
+        panel.style.display = "none";
+        return;
+    }
+
+    // Пользователь авторизован
+    panel.style.display = "flex";
+
+    // Элементы панели
+    const nameEl = document.getElementById("user-name");
+    const emailEl = document.getElementById("user-email");
+    const photoEl = document.getElementById("user-photo");
+    const logoutBtn = document.getElementById("logout-btn");
+
+    if (nameEl) nameEl.textContent = user.name;
+    if (emailEl) emailEl.textContent = user.email;
+    if (photoEl) photoEl.src = user.photo;
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            localStorage.removeItem("user");
+            window.location.href = "./index.html";
+        });
+    }
+});

@@ -13,22 +13,52 @@
             <h1>Курсы стартапа</h1>
         </div>
         <div class="header_links">
-            <a href="index.html">Главная</a>
-            <a href="courses.html">Курсы</a>
+            <!-- <a href="index.html">Главная</a>
+            <a href="courses.html">Курсы</a> -->
+            <button id="open-auth" class="btn">Войти</button>
         </div>
     </header>
-    <div class="main_container">
+    <!-- <div class="main_container">
         <section id="main_page">
             <h2>Учись создавать свой стартап</h2>
             <p>Курсы и задания по материалам Силиконовой долины</p>
-            <a href="courses.html" class="btn">Начать обучение</a>
+            <button id="open-auth2" class="btn">Начать обучение</button>
         </section>
+    </div> -->
+    <div class="m_container">
+        <div class="main_page">
+            <h1 class="main-title">
+                Учись создавать свой <span>стартап</span>
+            </h1>
+            <p class="main-subtitle">
+                Курсы и задания по материалам Силиконовой долины
+            </p>
+
+            <button id="open-auth2" class="btn-start">Начать обучение</button>
+        </div>
+
+        <div class="main-illustration">
+            <img src="./img/rocket.png" alt="Startup">
+        </div>
+    </div>
+
+
+    <div id="auth-overlay" class="auth-overlay">
+        <div class="auth-modal">
+            <button id="auth-close" class="auth-close">×</button>
+            <h2>Вход в аккаунт</h2>
+            <p>Авторизуйтесь, чтобы продолжить</p>
+            <button id="btn-google" class="btn btn-google">
+                <img src="./img/google_icon.png" alt="Google" class="google-icon">
+                Войти через Google
+            </button>
+        </div>
     </div>
     
     <footer>
         <p>© 2025 Startup Course | Inspired by Silicon Valley</p>
     </footer>
     <script src="./js/script.js"></script>
-    <script src="./js/auth.js" type="module"></script>
+    <script src="./js/auth.js" defer type="module"></script>
 </body>
 </html>
