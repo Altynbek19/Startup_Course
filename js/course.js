@@ -8,7 +8,7 @@ const courses = {
         instruction: "Пройдите уроки по порядку и выполните задания.",
         description: "Этот курс познакомит вас с основами стартап-культуры.",
         lecture: "Основная лекция: что такое стартап, зачем нужен MVP.",
-        video: "Видео: как создаются стартапы.",
+        video: "https://www.youtube.com/watch?v=g1WG4D0Aiek",
         practice: "Практическое задание: придумайте идею стартапа.",
         test: "Чтобы пройти тест, нажмите на кнопку внизу."
     },
@@ -122,15 +122,40 @@ const modal = document.getElementById("modal");
 const modalBody = document.getElementById("modal-body");
 const closeModal = document.getElementById("close-modal");
 
+// // Открытие модального окна
+// document.querySelectorAll(".action-btn").forEach(btn => {
+//     btn.addEventListener("click", () => {
+//         const type = btn.dataset.type;
+//         modal.style.display = "flex";
+//         modalBody.innerHTML = `
+//             <h3>${courses[id].title} — ${btn.textContent}</h3>
+//             <p>${courses[id][type]}</p>
+//         `;
+//     });
+// });
+
 // Открытие модального окна
 document.querySelectorAll(".action-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         const type = btn.dataset.type;
+        const content = courses[id][type];
+
         modal.style.display = "flex";
-        modalBody.innerHTML = `
-            <h3>${courses[id].title} — ${btn.textContent}</h3>
-            <p>${courses[id][type]}</p>
-        `;
+
+        if (type === "video" && content.startsWith("http")) {
+            // Если это ссылка на видео — вставляем iframe
+            modalBody.innerHTML = `
+                <h3>${courses[id].title} — ${btn.textContent}</h3>
+                <iframe width="100%" height="300" src="${content.replace("watch?v=", "embed/")}" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen></iframe>
+            `;
+        } else {
+            modalBody.innerHTML = `
+                <h3>${courses[id].title} — ${btn.textContent}</h3>
+                <p>${content}</p>
+            `;
+        }
     });
 });
 
