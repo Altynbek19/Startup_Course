@@ -1,5 +1,15 @@
 console.log("Startup Course platform loaded.");
 
+
+// Получаем высоту header
+const header = document.querySelector("header");
+const headerHeight = header.offsetHeight; // Это даст точную высоту шапки
+
+// Добавляем отступ сверху для основного контента (или body)
+document.querySelector(".main_container").style.paddingTop = `${headerHeight}px`;
+
+
+
 // document.addEventListener("DOMContentLoaded", () => {
 //     const results = JSON.parse(localStorage.getItem("testResults") || "{}");
 //     const buttons = document.querySelectorAll(".test-btn");

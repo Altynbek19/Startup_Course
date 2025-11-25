@@ -15,32 +15,57 @@
         <a href="courses.html">Курсы</a>
         </div>
     </header>
-
-    <main class="course-content">
-        <h2 id="course-title">Загрузка курса...</h2>
-        <p id="course-description"></p>
-
-        <section class="lesson">
-            <h3>📘 Основной материал</h3>
-            <p id="lesson-text">
-                Здесь будет содержимое урока — текст, советы, ссылки или видео.
-            </p>
-        </section>
-
-        <section class="task">
-            <h3>🧩 Практическое задание</h3>
-            <p id="task-text">
-                Пример: опиши идею своего стартапа в 3 предложениях.
-            </p>
-        </section>
-
-        <button class="btn" id="test-btn">Пройти тест</button>
-    </main>
-
+    <div class="main_container">
+        <div class="course_container">
+            <aside class="sidebar">
+                <h2>Курсы</h2>
+                <ul id="course-list"></ul>
+            </aside>
+            <main class="course-content">
+                <h2 id="course-title">Загрузка курса...</h2>
+                <p><strong>Цель:</strong> <span id="course-goal"></span></p>
+                <p><strong>Результаты:</strong> <span id="course-results"></span></p>
+                <p><strong>Инструкция:</strong> <span id="course-instruction"></span></p>
+                <p id="course-description"></p>
+                <div class="buttons">
+                    <button class="action-btn" data-type="lecture">Лекция</button>
+                    <button class="action-btn" data-type="video">Видео</button>
+                    <button class="action-btn" data-type="practice">Практическое задание</button>
+                    <button class="action-btn" data-type="test">Тест</button>
+                </div>
+    
+                <button id="next-course" class="next-btn">Следующий курс →</button>
+        
+                <!-- <section class="lesson">
+                    <h3>📘 Основной материал</h3>
+                    <p id="lesson-text">
+                        Здесь будет содержимое урока — текст, советы, ссылки или видео.
+                    </p>
+                </section>
+        
+                <section class="task">
+                    <h3>🧩 Практическое задание</h3>
+                    <p id="task-text">
+                        Пример: опиши идею своего стартапа в 3 предложениях.
+                    </p>
+                </section>
+        
+                <button class="btn" id="test-btn">Пройти тест</button> -->
+            </main>
+        </div>
+        <!-- modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span id="close-modal" class="close">&times;</span>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </div>
     <footer>
         <p>© 2025 Startup Course | Inspired by Silicon Valley</p>
     </footer>
 
     <script src="./js/course.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

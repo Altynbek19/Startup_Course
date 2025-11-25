@@ -4,17 +4,31 @@ body {
     background: #f9fafb;
     color: #333;
 }
+
+a{
+    text-decoration: none;
+}
 button{
     cursor: pointer;
 }
 
+.logo{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
 header {
+    box-sizing: border-box;
+    position: fixed;
+    width: 100%;
     background: #0f172a;
     color: white;
-    padding: 15px 40px;
+    padding: 10px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 9999;
 }
 
 .header_links a{
@@ -24,9 +38,9 @@ header {
     font-weight: 500;
 }
 
-.main_container {
+#main_page {
     text-align: center;
-    padding: 200px 20px;
+    padding: 250px 20px;
     background: linear-gradient(135deg, #2563eb, #9333ea);
     color: white;
 }
