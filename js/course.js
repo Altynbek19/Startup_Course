@@ -1,3 +1,5 @@
+updateGlobalProgress()
+
 // База данных курсов
 const courses = {
     1: {
@@ -59,6 +61,28 @@ if (!courses[id]) {
 }
 
 
+
+
+// Загружаем прогресс курсов или создаем пустой объект
+let savedProgress = JSON.parse(localStorage.getItem("courseProgress") || "{}");
+
+// Инициализируем все курсы
+Object.keys(courses).forEach(cid => {
+    if (!savedProgress[cid]) {
+        savedProgress[cid] = { lecture: false, video: false, practice: false, test: false };
+    }
+});
+
+// Сохраняем в localStorage
+localStorage.setItem("courseProgress", JSON.stringify(savedProgress));
+
+// сразу обновляем прогресс визуально
+updateCourseProgress();
+updateGlobalProgress();
+
+
+
+
 // Вставляем данные в DOM
 document.getElementById("course-title").textContent = courses[id].title;
 document.getElementById("course-goal").textContent = courses[id].goal;
@@ -101,6 +125,11 @@ nextButton.onclick = () => {
     }
 };
 
+const allButton = document.getElementById("all-course");
+allButton.onclick = () =>{
+    window.location.href = `courses.html`;
+}
+
 // === МОДАЛКИ ===
 const modal = document.getElementById("modal");
 const modalBody = document.getElementById("modal-body");
@@ -114,6 +143,16 @@ document.querySelectorAll(".action-btn").forEach(btn => {
 
         modal.classList.add("show");
         modal.style.display = "flex";
+
+        // Обновляем прогресс
+        const savedProgress = JSON.parse(localStorage.getItem("courseProgress") || "{}");
+        if (!savedProgress[id]) {
+            savedProgress[id] = { lecture: false, video: false, practice: false, test: false };
+        }
+        savedProgress[id][type] = true;
+        localStorage.setItem("courseProgress", JSON.stringify(savedProgress));
+        updateCourseProgress();
+        updateGlobalProgress();
 
         if (type === "video" && content.startsWith("http")) {
             // Если это ссылка на видео — вставляем iframe
@@ -156,4 +195,44 @@ function closeModalWindow() {
     modal.classList.remove("show");
     modalBody.innerHTML = "";
     setTimeout(() => modal.style.display = "none", 200);
+}
+
+
+
+
+
+
+function updateCourseProgress() {
+    const savedProgress = JSON.parse(localStorage.getItem("courseProgress") || "{}");
+    const p = savedProgress[id];
+    let percent = 0;
+
+    if (p.lecture) percent += 25;
+    if (p.video) percent += 25;
+    if (p.practice) percent += 25;
+    if (p.test) percent += 25;
+
+    document.getElementById("course-progress").style.width = percent + "%";
+    document.getElementById("course-progress-text").textContent = percent + "%";
+}
+
+function updateGlobalProgress() {
+    const savedProgress = JSON.parse(localStorage.getItem("courseProgress") || "{}");
+    const all = Object.values(savedProgress);
+    let total = 0;
+
+    all.forEach(course => {
+        let p = 0;
+        if (course.lecture) p += 25;
+        if (course.video) p += 25;
+        if (course.practice) p += 25;
+        if (course.test) p += 25;
+        total += p;
+    });
+
+    const max = all.length * 100;
+    const percent = Math.round((total / max) * 100);
+
+    document.getElementById("global-progress").style.width = percent + "%";
+    document.getElementById("global-progress-text").textContent = percent + "%";
 }

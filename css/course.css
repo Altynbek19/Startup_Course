@@ -1,24 +1,3 @@
-/* .course-content {
-    max-width: 800px;
-    margin: 60px auto;
-    background: white;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.course-content h2 {
-    color: #2563eb;
-}
-
-.lesson, .task {
-    margin-top: 30px;
-    text-align: left;
-} */
-
-
-
-
 .course_container {
     display: flex;
     justify-content: space-between;
@@ -27,7 +6,7 @@
 }
 
 /* Sidebar */
-.sidebar {
+/* .sidebar {
     width: 20%;
     background: #1e1e2f;
     color: white;
@@ -60,10 +39,214 @@
 
 .sidebar_links{
     color: white;
+} */
+
+
+
+/* SIDEBAR — обновлённый стиль */
+.sidebar {
+    width: 22%;
+    background: #151522;
+    color: white;
+    padding: 25px;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
-/* Content */
+.sidebar h2 {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+/* Прогресс */
+.sidebar-progress {
+    background: rgba(255,255,255,0.05);
+    padding: 15px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar-progress p {
+    margin: 0 0 8px 0;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+/* Обёртка */
+.progress-wrapper {
+    margin: 10px 0;
+}
+
+/* Полоска фона */
+.progress-bar-bg {
+    width: 100%;
+    height: 10px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Прогресс */
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #3b6bff, #7a8cff);
+    box-shadow: 0 0 10px rgba(100,150,255,0.5);
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    font-size: 14px;
+    opacity: 0.85;
+    font-weight: 600;
+}
+
+/* Список курсов */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background: #1f1f30;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    border: 1px solid transparent;
+}
+
+.sidebar li:hover {
+    background: #262640;
+    border-color: rgba(255,255,255,0.08);
+}
+
+.sidebar li.active {
+    background: #3b6bff;
+    border-color: rgba(255,255,255,0.2);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(70,110,255,0.6);
+}
+
+/* Ссылки */
+.sidebar_links {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+}
+
+
+/* Основной блок курса */
 .course-content {
+    flex: 1;
+    padding: 40px 50px;
+    background: #f8f9fb;
+    border-left: 1px solid rgba(0,0,0,0.05);
+}
+
+.course-content h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #1f1f2e;
+    font-weight: 700;
+}
+
+.course-content p {
+    font-size: 17px;
+    line-height: 1.55;
+    margin: 10px 0;
+    color: #333;
+}
+
+/* Контейнер кнопок */
+.buttons {
+    margin-top: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Основные кнопки курса */
+.action-btn {
+    padding: 12px 22px;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #3b6bfd, #637dff);
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: 0.25s ease;
+    box-shadow: 0 4px 10px rgba(80,110,255,0.25);
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(80,110,255,0.35);
+    background: linear-gradient(135deg, #335fff, #738bff);
+}
+
+/* Навигация: все курсы + следующий курс */
+.navigation_btn {
+    margin-top: 40px;
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+}
+
+/* Кнопка "Все курсы" */
+.all-btn {
+    padding: 12px 22px;
+    background: #e5e7eb;
+    color: #1f1f2e;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.all-btn:hover {
+    background: #d5d7dc;
+    transform: translateY(-2px);
+}
+
+/* Кнопка "Следующий курс" */
+.next-btn {
+    padding: 12px 22px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+    box-shadow: 0 4px 10px rgba(50,180,110,0.3);
+}
+
+.next-btn:hover {
+    background: #1e8f50;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(50,180,110,0.45);
+}
+
+
+
+
+/* Content */
+/* .course-content {
     flex: 1;
     padding: 30px;
 }
@@ -86,20 +269,57 @@
     background: #3030ff;
 }
 
-.next-btn {
-    margin-top: 50px;
-    padding: 15px 30px;
-    background: #27ae60;
-    color: white;
+
+.navigation_btn {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    gap: 20px;
+} */
+
+/* Общий стиль для обеих кнопок */
+/* .navigation_btn button {
+    flex: 1;
+    padding: 16px 20px;
+    font-size: 16px;
     border: none;
-    border-radius: 8px;
-    float: right;
+    border-radius: 10px;
     cursor: pointer;
+    font-weight: 600;
+    transition: 0.25s ease;
+} */
+
+/* Кнопка "Все курсы" */
+/* .all-btn {
+    background: linear-gradient(135deg, #4a4a6a, #2d2d45);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(80, 80, 120, 0.4);
+}
+
+.all-btn:hover {
+    background: linear-gradient(135deg, #5a5a85, #3b3b60);
+    box-shadow: 0 0 14px rgba(100, 100, 160, 0.6);
+    transform: translateY(-2px);
+} */
+
+/* Кнопка "Следующий курс" */
+/* .next-btn {
+    background: linear-gradient(135deg, #3b6bff, #1f47d8);
+    color: #fff;
+    box-shadow: 0 0 12px rgba(60, 110, 255, 0.6);
 }
 
 .next-btn:hover {
-    background: #1e8f50;
+    background: linear-gradient(135deg, #5f85ff, #2b58f2);
+    box-shadow: 0 0 18px rgba(100, 140, 255, 0.8);
+    transform: translateY(-2px);
+} */
+
+/* Нажатие */
+/* .navigation_btn button:active {
+    transform: scale(0.97);
 }
+ */
 
 /* ====== MODAL OVERLAY ====== */
 .modal {
@@ -185,3 +405,63 @@
     margin-top: 20px;
 }
 
+
+
+
+/* Общий стиль контейнера прогресса */
+.progress-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.percent_cont{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Фон прогресс-бара */
+.progress-bar-bg {
+    width: 100%;
+    height: 14px;
+    background: #4e4e7f;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
+}
+
+/* Сам прогресс */
+.progress-bar {
+    height: 100%;
+    width: 0;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #4c4cff, #6a5cff, #9c4cff);
+    background-size: 200% 200%;
+    animation: gradientMove 8s linear infinite;
+    transition: width 0.6s ease-in-out;
+    box-shadow: 0 0 10px rgba(76, 140, 255, 0.8);
+}
+
+/* Анимация переливания */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* Цифры справа от прогресса */
+.progress-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #d0d7ff;
+}

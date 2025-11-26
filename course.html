@@ -23,6 +23,28 @@
                     <span id="user-name"></span>
                     <span id="user-email"></span>
                 </div>
+                <!-- <div class="user-progress">
+                    <span>Прогресс:</span>
+                    <div class="progress-bar-bg">
+                        <div id="global-progress" class="progress-bar"></div>
+                    </div>
+                    <span id="global-progress-text">0%</span>
+                </div> -->
+                <div class="global-progress-container">
+                    <span>Прогресс:</span>
+
+                    <div class="percent_cont">
+                        <div class="progress-wrapper">
+                            <div class="progress-bar-bg">
+                                <div id="global-progress" class="progress-bar"></div>
+                            </div>
+                        </div>
+    
+                        <span id="global-progress-text" class="progress-text">0%</span>
+                    </div>
+                </div>
+
+
                 <button id="logout-btn" class="logout-btn">Выйти</button>
             </div>
         </div>
@@ -31,6 +53,27 @@
         <div class="course_container">
             <aside class="sidebar">
                 <h2>Курсы</h2>
+                <!-- <div class="sidebar-progress">
+                    <p>Прогресс курса:</p>
+                    <div class="progress-bar-bg">
+                        <div id="course-progress" class="progress-bar"></div>
+                    </div>
+                    <span id="course-progress-text">0%</span>
+                </div> -->
+                <div class="sidebar-progress">
+                    <p>Прогресс курса:</p>
+
+                    <div class="progress-wrapper">
+                        <div class="progress-bar-bg">
+                            <div id="course-progress" class="progress-bar"></div>
+                        </div>
+                    </div>
+
+                    <span id="course-progress-text" class="progress-text">0%</span>
+                </div>
+
+
+
                 <ul id="course-list"></ul>
             </aside>
             <main class="course-content">
@@ -46,7 +89,10 @@
                     <button class="action-btn" data-type="test">Тест</button>
                 </div>
     
-                <button id="next-course" class="next-btn">Следующий курс →</button>
+                <div class="navigation_btn">
+                    <button id="all-course" class="all-btn">Все курсы →</button>
+                    <button id="next-course" class="next-btn">Следующий курс →</button>
+                </div>
         
                 <!-- <section class="lesson">
                     <h3>📘 Основной материал</h3>

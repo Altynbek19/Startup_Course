@@ -12,6 +12,10 @@ button{
     cursor: pointer;
 }
 
+button:active {
+    transform: scale(0.97);
+}
+
 .logo{
     display: flex;
     gap: 20px;
@@ -243,7 +247,7 @@ footer {
 .user-panel {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
     background: rgba(255, 255, 255, 0.1);
     padding: 6px 12px;
     border-radius: 30px;
