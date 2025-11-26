@@ -1,4 +1,3 @@
-// Пример данных курсов
 // База данных курсов
 const courses = {
     1: {
@@ -8,7 +7,7 @@ const courses = {
         instruction: "Пройдите уроки по порядку и выполните задания.",
         description: "Этот курс познакомит вас с основами стартап-культуры.",
         lecture: "Основная лекция: что такое стартап, зачем нужен MVP.",
-        video: "https://www.youtube.com/watch?v=g1WG4D0Aiek",
+        video: "https://www.youtube.com/embed/lvqRMFscHgo?si=c6HSRzd5MGQEJ6LG",
         practice: "Практическое задание: придумайте идею стартапа.",
         test: "Чтобы пройти тест, нажмите на кнопку внизу."
     },
@@ -47,21 +46,6 @@ const courses = {
     }
 };
 
-
-// const courses = {
-//     1: {
-//     title: "Введение в стартапы",
-//     description: "Что такое стартап, как рождаются идеи и зачем нужен MVP.",
-//     lesson: "Стартап — это компания, созданная для быстрого роста. В этом уроке ты узнаешь, как мыслить как предприниматель и создавать решения, которые нужны людям.",
-//     task: "Опиши в 3 предложениях идею своего стартапа. Что она решает и для кого?"
-//     },
-//     2: {
-//     title: "Поиск идеи и проблемы",
-//     description: "Как найти идею, которая решает боль пользователей.",
-//     lesson: "Лучшие стартапы начинаются с проблем, а не с технологий. Изучи боли людей, прежде чем придумывать продукт.",
-//     task: "Напиши 3 проблемы, которые ты заметил у людей вокруг, и подумай, какую из них можно решить."
-//     }
-// };
 
 
 // Получаем id курса
@@ -122,33 +106,22 @@ const modal = document.getElementById("modal");
 const modalBody = document.getElementById("modal-body");
 const closeModal = document.getElementById("close-modal");
 
-// // Открытие модального окна
-// document.querySelectorAll(".action-btn").forEach(btn => {
-//     btn.addEventListener("click", () => {
-//         const type = btn.dataset.type;
-//         modal.style.display = "flex";
-//         modalBody.innerHTML = `
-//             <h3>${courses[id].title} — ${btn.textContent}</h3>
-//             <p>${courses[id][type]}</p>
-//         `;
-//     });
-// });
-
 // Открытие модального окна
 document.querySelectorAll(".action-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         const type = btn.dataset.type;
         const content = courses[id][type];
 
+        modal.classList.add("show");
         modal.style.display = "flex";
 
         if (type === "video" && content.startsWith("http")) {
             // Если это ссылка на видео — вставляем iframe
             modalBody.innerHTML = `
                 <h3>${courses[id].title} — ${btn.textContent}</h3>
-                <iframe width="100%" height="300" src="${content.replace("watch?v=", "embed/")}" 
+                <iframe width="100%" height="100%" src="${content.replace("watch?v=", "embed/")}" 
                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe>
+                allowfullscreen class="video"></iframe>
             `;
         } else {
             modalBody.innerHTML = `
@@ -160,77 +133,27 @@ document.querySelectorAll(".action-btn").forEach(btn => {
 });
 
 // Закрытие модального окна
-closeModal.addEventListener("click", () => modal.style.display = "none");
+closeModal.addEventListener("click", () => {
+    stopVideo();
+    modal.style.display = "none"
+});
 window.addEventListener("click", (e) => {
-    if (e.target === modal) modal.style.display = "none";
+    if (e.target === modal) {
+        stopVideo();
+        modal.style.display = "none";
+    }
 });
 
+function stopVideo() {
+    const iframe = modalBody.querySelector("iframe");
+    if (iframe) {
+        iframe.src = iframe.src; // перезапуск → видео останавливается
+    }
+    modalBody.innerHTML = "";
+}
 
-// // === generate sidebar ===
-// const courseList = document.getElementById("course-list");
-// courses.forEach(c => {
-//     const li = document.createElement("li");
-//     li.textContent = c.title;
-//     li.dataset.id = c.id;
-//     courseList.appendChild(li);
-
-//     li.addEventListener("click", () => loadCourse(c.id));
-// });
-
-// function loadCourse(id) {
-//     const course = courses.find(x => x.id == id);
-
-//     document.querySelectorAll(".sidebar li").forEach(li => {
-//         li.classList.toggle("active", li.dataset.id == id);
-//     });
-
-//     document.getElementById("course-title").textContent = course.title;
-//     document.getElementById("course-goal").textContent = course.goal;
-//     document.getElementById("course-results").textContent = course.results;
-//     document.getElementById("course-instruction").textContent = course.instruction;
-
-//     document.querySelectorAll(".action-btn").forEach(btn => {
-//         btn.onclick = () => openModal(course[btn.dataset.type]);
-//     });
-
-//     document.getElementById("next-course").onclick = () => {
-//         const next = courses.find(x => x.id == id + 1);
-//         if (next) loadCourse(next.id);
-//         else alert("Это последний курс!");
-//     };
-// }
-
-// loadCourse(1);
-
-// // === modal ===
-// const modal = document.getElementById("modal");
-// const modalBody = document.getElementById("modal-body");
-
-// function openModal(content) {
-//     modal.style.display = "block";
-//     modalBody.textContent = content;
-// }
-
-// document.getElementById("close-modal").onclick = () => {
-//     modal.style.display = "none";
-// };
-
-
-// // Определяем, какой курс открыт
-// const params = new URLSearchParams(window.location.search);
-// const id = params.get("id") || 1;
-
-// if (courses[id]) {
-//     document.getElementById("course-title").innerText = courses[id].title;
-//     document.getElementById("course-description").innerText = courses[id].description;
-//     document.getElementById("lesson-text").innerText = courses[id].lesson;
-//     document.getElementById("task-text").innerText = courses[id].task;
-// } else {
-//     document.getElementById("course-title").innerText = "Курс не найден";
-// }
-
-// Кнопка теста
-
-// document.getElementById("test-btn").addEventListener("click", () => {
-//     window.location.href = `test.html?id=${id}`;
-// });
+function closeModalWindow() {
+    modal.classList.remove("show");
+    modalBody.innerHTML = "";
+    setTimeout(() => modal.style.display = "none", 200);
+}

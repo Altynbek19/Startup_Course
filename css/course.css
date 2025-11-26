@@ -101,24 +101,86 @@
     background: #1e8f50;
 }
 
-/* Modal */
+/* ====== MODAL OVERLAY ====== */
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    z-index: 5000;
+
+    /* Анимация появления */
+    opacity: 0;
+    transition: opacity 0.25s ease;
 }
 
+.modal.show {
+    opacity: 1;
+}
+
+/* ====== MODAL CONTENT ====== */
 .modal-content {
-    background: white;
-    width: 50%;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 10px;
+    background: #ffffff;
+    width: 60%;
+    max-width: 900px;
+    max-height: 80vh;
+    padding: 25px 30px;
+    border-radius: 18px;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    /* Тень + анимация */
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    transform: translateY(20px);
+    animation: modalPopUp 0.3s ease forwards;
 }
 
-.close {
-    float: right;
-    cursor: pointer;
-    font-size: 22px;
+/* Анимация увеличения */
+@keyframes modalPopUp {
+    to {
+        transform: translateY(0);
+    }
 }
+
+/* ====== CLOSE BUTTON ====== */
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 26px;
+    color: #444;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.close:hover {
+    color: #ff4444;
+    transform: scale(1.15);
+}
+
+/* ===== CONTENT TEXT ===== */
+#modal-body h3 {
+    margin: 0;
+    font-size: 22px;
+    color: #2563eb;
+}
+
+#modal-body p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* ===== VIDEO STYLE ===== */
+.video {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 450px;
+    max-height: 70vh;
+}
+
