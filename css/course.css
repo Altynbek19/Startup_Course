@@ -662,3 +662,60 @@
     font-weight: bold;
     color: #d0d7ff;
 }
+
+
+/* ===== ADAPTIVE COURSE PAGE (динамический отступ) ===== */
+
+
+/* Tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .course_container {
+        padding-top: calc(70px + 15px);
+    }
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .course-content {
+        padding: 30px 25px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) and (min-width: 481px) {
+    .course_container {
+        padding-top: calc(60px + 10px); /* меньше отступ, т.к. шапка меньше */
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px 10px;
+    }
+
+    .course-content {
+        padding: 20px 12px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .course_container {
+        padding-top: calc(50px + 8px); /* минимальный отступ под маленькую шапку */
+        gap: 10px;
+    }
+
+    .sidebar {
+        padding: 8px 6px;
+        gap: 8px;
+    }
+
+    .course-content {
+        padding: 12px 8px;
+    }
+}
