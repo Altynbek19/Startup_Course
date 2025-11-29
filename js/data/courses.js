@@ -4,7 +4,13 @@ export const courses = {
         video: "https://www.youtube.com/embed/CBYhVcO4WgI?si=X8rcYOUoa0EMcBTt",
         short: "Основы стартап-культуры: что такое стартап, чем он отличается от бизнеса и роль MVP.",
         goal: "Понять фундаментальные принципы стартапов и подготовиться к следующим этапам.",
-        practice: "Создайте собственный питч-дек.",
+        practiceQuestion: "Ответить письменно:",
+        practice: [
+            "Что такое стартап?",
+            "Чем стартап отличается от бизнеса?",
+            "Зачем нужен MVP?"
+
+        ],
         results: [
             "понимать что такое стартап",
             "отличать стартап от малого бизнеса",
@@ -131,6 +137,12 @@ export const courses = {
         video: "https://www.youtube.com/embed/MT4Ig2uqjTc?si=0yw3aDHAXL_PIliO",
         short: "Как находить реальные проблемы пользователей и выбирать жизнеспособные идеи.",
         goal: "Научить выявлять и оценивать реальные пользовательские боли.",
+        practiceQuestion: "",
+        practice: [
+            "Провести 3 интервью.",
+            "Выписать 10 проблем.",
+            "Выбрать 1 проблему и описать её глубину."
+        ],
         results: [
             "проводить интервью",
             "находить повторяющиеся проблемы",
@@ -257,6 +269,13 @@ export const courses = {
         video: "https://www.youtube.com/embed/1hHMwLxN6EM?si=LiNsU5rgLIKsXmOp",
         short: "Как создавать прототипы, тестировать гипотезы и получать первые реакции.",
         goal: "Научить создавать MVP и проверять гипотезы без кода.",
+        practiceQuestion: "",
+        practice: [
+            "Создать прототип.",
+            "Показать 3 людям.",
+            "Записать: что понятно, что нет, что улучшить."
+
+        ],
         results: [
             "создание прототипов",
             "проверка гипотез",
@@ -384,6 +403,13 @@ export const courses = {
         video: "https://www.youtube.com/embed/HWao7WHc8X4?si=1wiuejKml5AJWGpC",
         short: "Как развивать стартап без инвесторов и достигать PMF.",
         goal: "Научить стратегиям раннего роста без капитала.",
+        practiceQuestion: "",
+        practice: [
+            "Описать первого клиента.",
+            "Описать первого клиента.",
+            "Создать месячный план роста."
+
+        ],
         results: [
             "понимание PMF",
             "работа с клиентами",
@@ -510,6 +536,11 @@ export const courses = {
         video: "https://www.youtube.com/embed/zBUhQPPS9AY?si=KbB76iJumJjq04gU",
         short: "Как растить стартап, не теряя контроль над компанией.",
         goal: "Понять модели финансирования и риски.",
+        practiceQuestion: "",
+        practice: [
+            "Описать 3 способа финансирования.",
+            "Рассчитать бюджет на 3 месяца."
+        ],
         results: [
             "риски VC",
             "bootstrap",
@@ -635,6 +666,10 @@ export const courses = {
         video: "https://www.youtube.com/embed/oWZbWzAyHAE?si=TnihnHhejIcY2HnL",
         short: "Выбор метрик цены, модели доходов и пакетов.",
         goal: "Научить строить монетизацию.",
+        practiceQuestion: "",
+        practice: [
+            "Создать 3 пакета: Basic, Growth, Pro."
+        ],
         results: [
             "выбор метрик",
             "создание пакетов",
@@ -759,6 +794,11 @@ export const courses = {
         video: "https://www.youtube.com/embed/17XZGUX_9iM?si=u4cfnuuPBOSSpX-y",
         short: "Как создавать питч и отвечать на вопросы инвесторов.",
         goal: "Научить презентации стартапа.",
+        practiceQuestion: "",
+        practice: [
+            "Записать 30-секундное pitch video"
+
+        ],
         results: [
             "30-секундный питч",
             "знание traction",
@@ -881,6 +921,13 @@ export const courses = {
         video: "https://www.youtube.com/embed/ii1jcLg-eIQ?si=axrNEJEUwQIOgzmm",
         short: "YC: идеи, MVP, пользователи и инвесторы.",
         goal: "Дать основу стартап-мышления.",
+        practiceQuestion: "",
+        practice: [
+            "Выбрать лекцию.",
+            "Выписать 5 инсайтов.",
+            "Применить один инсайт."
+
+        ],
         results: [
             "понимание идей",
             "работа с клиентами",

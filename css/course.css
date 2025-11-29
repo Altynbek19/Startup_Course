@@ -311,6 +311,134 @@
     line-height: 1.6;
 }
 
+
+
+
+/* Контейнер для карточек */
+.practice_cont {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 25px;
+    max-height: 65vh;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Карточка задания */
+.practice-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px 25px;
+    background: linear-gradient(135deg, #f0f4ff, #e0e7ff);
+    border-left: 6px solid #4c4cff;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(76, 108, 255, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    opacity: 0;
+    transform: translateY(15px);
+    animation: cardFadeIn 0.4s forwards;
+}
+
+/* Анимация появления */
+@keyframes cardFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Контейнер практики */
+.practice_cont {
+    background: #f3f4f6;
+    padding: 25px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Заголовок блока */
+.practice_cont h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2563eb;
+    margin-bottom: 15px;
+}
+
+/* Список заданий */
+.practice-list {
+    list-style: disc inside;
+    color: #374151;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding-left: 20px;
+}
+
+.practice-list li {
+    margin-bottom: 10px;
+}
+
+/* Блок загрузки файла */
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: white;
+    border: 2px dashed #2563eb;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.file-upload:hover {
+    background: #e0f2fe;
+    border-color: #1e40af;
+}
+
+/* Скрываем стандартный input */
+.file-input {
+    display: none;
+}
+
+/* Лейбл как кнопка */
+.file-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: #1e40af;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.file-label:hover {
+    color: #2563eb;
+}
+
+/* Иконка внутри лейбла */
+.file-label svg {
+    fill: #2563eb;
+    transition: 0.25s ease;
+}
+
+.file-label:hover svg {
+    fill: #1e40af;
+}
+
+/* Если нужно — можно добавить анимацию при наведении на блок */
+.file-upload::before {
+    content: "📎";
+    font-size: 1.3rem;
+    margin-right: 8px;
+}
+
 /* ===== ANIMATIONS ===== */
 @keyframes modalPopUp {
     0% { transform: translateY(20px); opacity: 0; }

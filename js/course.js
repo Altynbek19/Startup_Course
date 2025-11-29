@@ -139,7 +139,6 @@ allButton.onclick = () =>{
 // === МОДАЛКИ ===
 const modal = document.getElementById("modal");
 const modalBody = document.getElementById("modal-body");
-const lecturebody = document.getElementById("lecture-body");
 const closeModal = document.getElementById("close-modal");
 
 // Открытие модального окна
@@ -169,7 +168,33 @@ document.querySelectorAll(".action-btn").forEach(btn => {
                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen class="video"></iframe>
             `;
-        }else if (type === "lecture") {
+        }else if (type === "practice") {
+            const assignments = courses[id]?.practicalAssignment || [];
+            const assignmentsHTML = courses[id].practice
+                .map((item, index) => `<li>${item}</li>`)
+                .join("");
+
+            modalBody.innerHTML = `
+                <h3 class="modal-title">${courses[id].title} — ${btn.textContent}</h3>
+                <div class="practice_cont">
+                    <h3>${courses[id].practiceQuestion}</h3>
+                    <ul class="practice-list">
+                        ${assignmentsHTML || "<li>Заданий нет</li>"}
+                    </ul>
+                    <div class="file-upload">
+                        <input type="file" id="file-${id}" class="file-input" />
+                        <label for="file-${id}" class="file-label">
+                            <span>Прикрепить файл</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M.5 9.9V12a2 2 0 002 2h11a2 2 0 002-2V9.9a.5.5 0 011 0V12a3 3 0 01-3 3H2.5a3 3 0 01-3-3V9.9a.5.5 0 011 0z"/>
+                                <path d="M7.646 1.146a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L8.5 2.707V10.5a.5.5 0 01-1 0V2.707L5.354 4.854a.5.5 0 11-.708-.708l3-3z"/>
+                            </svg>
+                        </label>
+                    </div>
+                </div>
+            `;
+        }
+        else if (type === "lecture") {
             const lectureData = lectures[id];
 
             // Создаем HTML блоков динамически
