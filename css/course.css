@@ -5,44 +5,6 @@
     width: 100%;
 }
 
-/* Sidebar */
-/* .sidebar {
-    width: 20%;
-    background: #1e1e2f;
-    color: white;
-    padding: 15px;
-    overflow-y: auto;
-}
-
-.sidebar h2 {
-    margin-top: 0;
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar li {
-    padding: 10px;
-    background: #2a2a40;
-    margin-bottom: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    color: white;
-}
-
-.sidebar li:hover,
-.sidebar li.active {
-    background: #4c4cff;
-}
-
-.sidebar_links{
-    color: white;
-} */
-
-
-
 /* SIDEBAR — обновлённый стиль */
 .sidebar {
     width: 22%;
@@ -248,83 +210,6 @@
 
 
 
-
-/* Content */
-/* .course-content {
-    flex: 1;
-    padding: 30px;
-}
-
-.buttons {
-    margin-top: 30px;
-}
-
-.action-btn {
-    padding: 12px 20px;
-    margin-right: 10px;
-    background: #4c4cff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.action-btn:hover {
-    background: #3030ff;
-}
-
-
-.navigation_btn {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-    gap: 20px;
-} */
-
-/* Общий стиль для обеих кнопок */
-/* .navigation_btn button {
-    flex: 1;
-    padding: 16px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.25s ease;
-} */
-
-/* Кнопка "Все курсы" */
-/* .all-btn {
-    background: linear-gradient(135deg, #4a4a6a, #2d2d45);
-    color: #fff;
-    box-shadow: 0 0 10px rgba(80, 80, 120, 0.4);
-}
-
-.all-btn:hover {
-    background: linear-gradient(135deg, #5a5a85, #3b3b60);
-    box-shadow: 0 0 14px rgba(100, 100, 160, 0.6);
-    transform: translateY(-2px);
-} */
-
-/* Кнопка "Следующий курс" */
-/* .next-btn {
-    background: linear-gradient(135deg, #3b6bff, #1f47d8);
-    color: #fff;
-    box-shadow: 0 0 12px rgba(60, 110, 255, 0.6);
-}
-
-.next-btn:hover {
-    background: linear-gradient(135deg, #5f85ff, #2b58f2);
-    box-shadow: 0 0 18px rgba(100, 140, 255, 0.8);
-    transform: translateY(-2px);
-} */
-
-/* Нажатие */
-/* .navigation_btn button:active {
-    transform: scale(0.97);
-}
- */
-
 /* ====== MODAL OVERLAY ====== */
 .modal {
     display: none;
@@ -364,6 +249,80 @@
     transform: translateY(20px);
     animation: modalPopUp 0.3s ease forwards;
 }
+
+
+/* ===== LECTURE CONTENT ===== */
+.lecture-wrapper {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.lecture-header h2 {
+    font-size: 2rem;
+    color: #2563eb;
+}
+
+.lecture-paragraph {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #374151;
+    margin: 15px 0;
+}
+
+.lecture-title {
+    margin: 25px 0 12px 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1e40af;
+    border-left: 4px solid #2563eb;
+    padding-left: 10px;
+}
+
+.lecture-list {
+    margin: 10px 0 20px 0;
+    padding-left: 20px;
+    color: #4b5563;
+}
+
+.lecture-list li {
+    margin-bottom: 10px;
+    padding-left: 5px;
+    position: relative;
+}
+
+
+
+.takeaway {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.takeaway h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e40af;
+}
+
+.takeaway p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes modalPopUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 
 /* Анимация увеличения */
 @keyframes modalPopUp {

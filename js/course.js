@@ -1,6 +1,7 @@
 updateGlobalProgress()
 
 import { courses } from "./data/courses.js";
+import { lectures } from "./data/lectures.js";
 // База данных курсов
 // const courses = {
 //     1: {
@@ -138,6 +139,7 @@ allButton.onclick = () =>{
 // === МОДАЛКИ ===
 const modal = document.getElementById("modal");
 const modalBody = document.getElementById("modal-body");
+const lecturebody = document.getElementById("lecture-body");
 const closeModal = document.getElementById("close-modal");
 
 // Открытие модального окна
@@ -158,7 +160,7 @@ document.querySelectorAll(".action-btn").forEach(btn => {
         localStorage.setItem("courseProgress", JSON.stringify(savedProgress));
         updateCourseProgress();
         updateGlobalProgress();
-
+        
         if (type === "video" && content.startsWith("http")) {
             // Если это ссылка на видео — вставляем iframe
             modalBody.innerHTML = `
@@ -167,7 +169,41 @@ document.querySelectorAll(".action-btn").forEach(btn => {
                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen class="video"></iframe>
             `;
-        } else {
+        }else if (type === "lecture") {
+            const lectureData = lectures[id];
+
+            // Создаем HTML блоков динамически
+            let lectureHTML = '';
+            lectureData.blocks.forEach(block => {
+                switch (block.type) {
+                    case 'paragraph':
+                        lectureHTML += `<p class="lecture-paragraph">${block.text}</p>`;
+                        break;
+                    case 'title':
+                        lectureHTML += `<h3 class="lecture-title">${block.text}</h3>`;
+                        break;
+                    case 'list':
+                        const listItems = block.items.map(item => `<li>${item}</li>`).join('');
+                        lectureHTML += `<ul class="lecture-list">${listItems}</ul>`;
+                        break;
+                    case 'divider':
+                        lectureHTML += `<hr class="lecture-divider">`;
+                        break;
+                }
+            });
+
+            // Вставляем в модалку
+            modalBody.innerHTML = `
+                <div class="lecture-wrapper">
+                    <div class="lecture-header">
+                        <h2>${courses[id].title} — ${btn.textContent}</h2>
+                    </div>
+                    <div class="lecture-content">
+                        ${lectureHTML}
+                    </div>
+                </div>
+            `;
+        }else {
             modalBody.innerHTML = `
                 <h3>${courses[id].title} — ${btn.textContent}</h3>
                 <p>${content}</p>
