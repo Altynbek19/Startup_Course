@@ -5,6 +5,119 @@ body {
     color: #333;
 }
 
+
+/* body {
+    opacity: 0;
+    transition: opacity .4s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+body.fade-out {
+    opacity: 0;
+    transition: opacity .3s ease;
+} */
+
+
+/* ————————————————
+DARK LUX TRANSITION
+   ———————————————— */
+
+
+#transition-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 9999;
+}
+
+#transition-canvas.active {
+    opacity: 1;
+}
+
+
+/* MAIN OVERLAY */
+/* #page-transition {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+
+    /* Анимируем только opacity */
+    /* opacity: 0;
+    transition: opacity 0.5s ease;
+} */ 
+
+/* Градиентная пелена (как у Apple) */
+/* #page-transition::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        135deg,
+        #4f46e5 0%,
+        #7c3aed 40%,
+        #ec4899 100%
+    );
+    transform: translateX(-120%) skewX(-12deg);
+    filter: blur(40px) brightness(1.6);
+    transition: transform 0.8s cubic-bezier(.22,.61,.36,1);
+} */
+
+/* Blur-слой наверху */
+/* #page-transition::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(30px);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+/* Активируем плавный вход */
+#page-transition.active {
+    pointer-events: all;
+    opacity: 1;
+}
+
+#page-transition.active::before {
+    transform: translateX(20%) skewX(-12deg);
+}
+
+#page-transition.active::after {
+    opacity: 1;
+}
+ */
+
+/* ————————— Вход страницы ————————— */
+
+/* body.page-enter {
+    opacity: 0;
+    transform: scale(0.97) translateY(20px);
+    filter: blur(12px);
+}
+
+body.page-enter-active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s cubic-bezier(.22,.61,.36,1),
+        filter 0.6s ease;
+} */
+
+
 a{
     text-decoration: none;
 }
@@ -129,14 +242,14 @@ header {
     }
 } */
 
-
+/* Футер */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
     background: #0f172a;
-    color: #ccc;
+    color: #f3f4f6;
+    font-size: 0.95rem;
 }
-
 
 
 /* ===== OVERLAY ===== */

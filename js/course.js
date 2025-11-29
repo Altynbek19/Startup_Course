@@ -1,52 +1,57 @@
 updateGlobalProgress()
 
+import { courses } from "./data/courses.js";
 // База данных курсов
-const courses = {
-    1: {
-        title: "Введение в стартапы",
-        goal: "Понять, что такое стартап и MVP.",
-        results: "Базовое понимание процессов запуска.",
-        instruction: "Пройдите уроки по порядку и выполните задания.",
-        description: "Этот курс познакомит вас с основами стартап-культуры.",
-        lecture: "Основная лекция: что такое стартап, зачем нужен MVP.",
-        video: "https://www.youtube.com/embed/lvqRMFscHgo?si=c6HSRzd5MGQEJ6LG",
-        practice: "Практическое задание: придумайте идею стартапа.",
-        test: "Чтобы пройти тест, нажмите на кнопку внизу."
-    },
-    2: {
-        title: "Поиск идеи",
-        goal: "Научиться находить реальные проблемы.",
-        results: "Умение находить идеи, которые нужны людям.",
-        instruction: "Изучайте примеры и выполняйте задания.",
-        description: "Вы научитесь искать боли пользователей.",
-        lecture: "Лекция: как находить проблемы на рынке.",
-        video: "Видео про поиск идей.",
-        practice: "Задание: найдите и опишите 3 проблемы.",
-        test: "Тест откроется после изучения материала."
-    },
-    3: {
-        title: "Прототипирование",
-        goal: "Создать быстрый прототип.",
-        results: "Навык делать MVP за 1–3 дня.",
-        instruction: "Следуйте шагам и создайте прототип.",
-        description: "Вы поймёте, как делать прототипы быстро.",
-        lecture: "Лекция: виды прототипов и примеры.",
-        video: "Видео: создание MVP.",
-        practice: "Создайте простой прототип.",
-        test: "Закрепите знания тестом."
-    },
-    4: {
-        title: "Презентация и инвесторы",
-        goal: "Научиться делать питч-дек.",
-        results: "Умение убедительно презентовать проект.",
-        instruction: "Следуйте шаблонам и выполняйте задание.",
-        description: "Вы научитесь говорить с инвесторами.",
-        lecture: "Лекция: структура питч-дека.",
-        video: "Видео: как презентовать стартап.",
-        practice: "Создайте собственный питч-дек.",
-        test: "Пройдите финальный тест."
-    }
-};
+// const courses = {
+//     1: {
+//         title: "Введение в стартапы",
+//         goal: "Понять, что такое стартап и MVP.",
+//         results: "Базовое понимание процессов запуска.",
+//         instruction: "Пройдите уроки по порядку и выполните задания.",
+//         description: "Этот курс познакомит вас с основами стартап-культуры.",
+//         lecture: "Основная лекция: что такое стартап, зачем нужен MVP.",
+//         video: "https://www.youtube.com/embed/lvqRMFscHgo?si=c6HSRzd5MGQEJ6LG",
+//         practice: "Практическое задание: придумайте идею стартапа.",
+//         test: "Чтобы пройти тест, нажмите на кнопку внизу."
+//     },
+//     2: {
+//         title: "Поиск идеи",
+//         goal: "Научиться находить реальные проблемы.",
+//         results: "Умение находить идеи, которые нужны людям.",
+//         instruction: "Изучайте примеры и выполняйте задания.",
+//         description: "Вы научитесь искать боли пользователей.",
+//         lecture: "Лекция: как находить проблемы на рынке.",
+//         video: "Видео про поиск идей.",
+//         practice: "Задание: найдите и опишите 3 проблемы.",
+//         test: "Тест откроется после изучения материала."
+//     },
+//     3: {
+//         title: "Прототипирование",
+//         goal: "Создать быстрый прототип.",
+//         results: "Навык делать MVP за 1–3 дня.",
+//         instruction: "Следуйте шагам и создайте прототип.",
+//         description: "Вы поймёте, как делать прототипы быстро.",
+//         lecture: "Лекция: виды прототипов и примеры.",
+//         video: "Видео: создание MVP.",
+//         practice: "Создайте простой прототип.",
+//         test: "Закрепите знания тестом."
+//     },
+//     4: {
+//         title: "Презентация и инвесторы",
+//         goal: "Научиться делать питч-дек.",
+//         results: "Умение убедительно презентовать проект.",
+//         instruction: "Следуйте шаблонам и выполняйте задание.",
+//         description: "Вы научитесь говорить с инвесторами.",
+//         lecture: "Лекция: структура питч-дека.",
+//         video: "Видео: как презентовать стартап.",
+//         practice: "Создайте собственный питч-дек.",
+//         test: "Пройдите финальный тест."
+//     }
+// };
+
+
+
+
 
 
 
@@ -236,3 +241,88 @@ function updateGlobalProgress() {
     document.getElementById("global-progress").style.width = percent + "%";
     document.getElementById("global-progress-text").textContent = percent + "%";
 }
+
+// === ГЕНЕРАЦИЯ И ПРОХОЖДЕНИЯ ТЕСТА (НОВАЯ ВЕРСИЯ) ===
+
+// Открытие теста по кнопке
+document.querySelector('[data-type="test"]').addEventListener("click", () => {
+    openTestModal();
+});
+
+// Генерация теста
+function openTestModal() {
+    const test = courses[id].test; // массив [{question, answers[], correct[] }]
+
+    modal.classList.add("show");
+    modal.style.display = "flex";
+
+    let html = `
+        <h3>Тест — ${courses[id].title}</h3>
+        <div class="test-container">
+    `;
+
+    test.forEach((q, index) => {
+        html += `
+            <div class="test-question">
+                <h3>${index + 1}. ${q.question}</h3>
+                <ul class="test-options">
+        `;
+
+        q.answers.forEach((answer, i) => {
+            html += `
+                <li>
+                    <label>
+                        <input type="checkbox" name="q${index}" value="${i}">
+                        ${answer}
+                    </label>
+                </li>
+            `;
+        });
+
+        html += `</ul></div>`;
+    });
+
+    html += `
+        <button id="submit-test">Проверить</button>
+        <div id="test-result" class="test-result"></div>
+    </div>`;
+
+    modalBody.innerHTML = html;
+
+    document.getElementById("submit-test").onclick = checkNewTest;
+}
+
+
+// === Новая функция проверки ===
+function checkNewTest() {
+    const test = courses[id].test;
+
+    let correctCount = 0;
+
+    test.forEach((q, index) => {
+        const selected = [
+            ...document.querySelectorAll(`input[name="q${index}"]:checked`)
+        ].map(el => Number(el.value));
+
+        const isCorrect =
+            selected.length === q.correct.length &&
+            selected.every(v => q.correct.includes(v));
+
+        if (isCorrect) correctCount++;
+    });
+
+    const total = test.length;
+    const percent = Math.round((correctCount / total) * 100);
+
+    document.getElementById("test-result").textContent =
+        `Ваш результат: ${correctCount} из ${total} (${percent}%)`;
+
+    // Сохранение прогресса
+    const savedProgress = JSON.parse(localStorage.getItem("courseProgress"));
+    savedProgress[id].test = true;
+    localStorage.setItem("courseProgress", JSON.stringify(savedProgress));
+
+    updateCourseProgress();
+    updateGlobalProgress();
+}
+
